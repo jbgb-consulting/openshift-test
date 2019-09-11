@@ -45,6 +45,7 @@ buildscript {
         classpath(kotlin("noarg", Versions.Plugins.noArg))
 
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${Versions.Plugins.springBoot}")
+        classpath("gradle.plugin.com.spengreb.gradle:gradle-openshift-plugin:0.2")
     }
 }
 
@@ -57,9 +58,11 @@ plugins {
     id("org.jetbrains.kotlin.plugin.allopen") version Versions.Plugins.allOpen
     id("org.jetbrains.kotlin.plugin.noarg") version Versions.Plugins.noArg
     id("com.adarshr.test-logger") version Versions.Plugins.testLogger
+    id("com.spengreb.openshift-base") version "0.2"
 }
 
 apply(plugin = "org.springframework.boot")
+apply(plugin = "com.spengreb.openshift-base")
 
 defaultTasks = mutableListOf("bootRun")
 group = "de.hska"
@@ -70,6 +73,7 @@ repositories {
     maven("http://dl.bintray.com/kotlin/kotlin-eap")
     maven("http://repo.spring.io/libs-milestone")
     maven("http://repo.spring.io/release")
+    maven("https://plugins.gradle.org/m2/")
 
     mavenCentral()
 }
