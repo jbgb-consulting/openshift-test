@@ -7,4 +7,6 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 
-exec java -jar build/libs/....jar --spring.profiles.active=dev
+#exec java -jar build/libs/....jar --spring.profiles.active=dev
+
+exec java -Djava.security.egd=file:/dev/./urandom -jar /opt/openshift/app.jar $APP_OPTIONS

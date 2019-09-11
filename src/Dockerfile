@@ -5,13 +5,14 @@ FROM openshift/base-centos7
 LABEL maintainer=JBGB <jbgb.consulting@gmail.com>
 
 # TODO: Rename the builder environment variable to inform users about application you provide them
-# ENV BUILDER_VERSION 1.0
-ENV GRADLE_VERSION 5.4.1
+ENV BUILDER_VERSION 1.0
+ENV GRADLE_VERSION 5.6
+#ENV GRADLE_VERSION 5.4.1
 #ENV MAVEN_VERSION 3.3.3
 
 # TODO: Set labels used in OpenShift to describe the builder image
 LABEL io.k8s.description="Platform for building Kunde" \
-      io.k8s.display-name="Spring Boot builder 1.0" \
+      io.k8s.display-name="Spring Boot builder 1.1" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder, gradle"
 
@@ -32,7 +33,7 @@ RUN yum install -y --enablerepo=centosplus \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src
 
 ENV PATH=/opt/gradle/bin/:$PATH
-ENV BUILDER_VERSION 1.0
+ENV BUILDER_VERSION 1.1
 
 # TODO (optional): Copy the builder files into /opt/app-root
 # COPY ./<builder_folder>/ /opt/app-root/
